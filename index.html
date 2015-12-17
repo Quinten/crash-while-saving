@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>crash while saving</title>
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="apple-touch-icon" href="img/icon.png" />
+<style type="text/css">
+img{
+width:80px;height:60px;float:left;
+border:0;cursor:pointer;}
+.typo{
+width:80px;height:60px;float:left;
+font-family:'Courier New', Courier, monospace;
+font-size:12px;line-height:10px;
+overflow:hidden;cursor:pointer;}
+</style>
+</head>
+<body style="margin:0">
+<div style="display:none">
+<audio id="bip"><source src="snd/bip.mp3" /><source src="snd/bip.wav" /></audio>
+<audio id="floppy" autoplay="autoplay"><source src="snd/floppy.mp3" /><source src="snd/floppy.wav" /></audio>
+</div>
+<canvas id="c" width="640" height="480" style="float:left;"></canvas>
+
+<!--  use 640px to 480px sized pictures -->
+<img src="img/disk.jpg"/>
+<img src="img/druk.jpg"/>
+<img src="img/blue.jpg"/>
+<img src="img/god_or_the_all_seeing_eye.jpg"/>
+<div class="typo">every thumbnail once was a bigger picture</div>
+<img src="img/planken_boven.jpg"/>
+<img src="img/danny.jpg"/>
+<div class="typo">maybe i should buy a scanner</div>
+<img src="img/tongues.jpg"/>
+<img src="img/planken_onder.jpg"/>
+<img src="img/bar.jpg"/>
+<img src="img/dunno.jpg"/>
+<img src="img/girl_top.jpg"/>
+<img src="img/invert.jpg"/>
+<img src="img/girl_bottom.jpg"/>
+<img src="img/lift.jpg"/>
+<div class="typo">why webdesign sucks in 2010</div>
+<img src="img/blob1.jpg"/>
+<img src="img/blob2.jpg"/>
+<img src="img/landschap_links.jpg"/>
+<img src="img/groenboekske.jpg"/>
+<img src="img/landschap_rechts.jpg"/>
+<img src="img/boots.jpg"/>
+<img src="img/blob3.jpg"/>
+<img src="img/blob4.jpg"/>
+<img src="img/blonde_stoot_boven.jpg"/>
+<img src="img/blob5.jpg"/>
+<img src="img/blob6.jpg"/>
+<img src="img/blob7.jpg"/>
+<img src="img/blob8.jpg"/>
+<div class="typo">is it a crashing slideshow or a</div>
+<img src="img/blonde_stoot_onder.jpg"/>
+<img src="img/flapoor_boven.jpg"/>
+<div class="typo">sentence shuffle word game</div>
+<img src="img/flapoor_onder.jpg"/>
+<img src="img/zwanger_boven.jpg"/>
+<div class="typo">a tiny javascript transition with &lt;canvas&gt;</div>
+<img src="img/hyper2.jpg"/>
+<img src="img/vloer.jpg"/>
+<img src="img/hyper3.jpg"/>
+<img src="img/zwanger_onder.jpg"/>
+<img src="img/hyper5.jpg"/>
+<img src="img/tintout.jpg"/>
+<div class="typo">portable code, easily swap img tags with your own</div>
+<img src="img/helga_the_punkwyf_boven.jpg"/>
+<img src="img/hyper11.jpg"/>
+<img src="img/helga_the_punkwyf_onder.jpg"/>
+<img src="img/hyper10.jpg"/>
+<img src="img/hyper7.jpg"/>
+<div class="typo">#fail code and images by @qubecity</div>
+<img src="img/kraai.jpg"/>
+<div class="typo" id="end">you have seen these --&gt;</div>
+
+<script>
+var d=document,c=d.getElementById("c"),t=c.getContext("2d");
+var v=d.getElementsByTagName("div");
+for(var j=0;j<v.length;j++){if(v[j].id!="end")v[j].addEventListener('click', onD, false)};
+var snB = d.getElementById('bip');
+function onD(e){d.body.appendChild(e.target);snB.play();}
+var p=d.getElementsByTagName("img");
+for(var i=0;i<p.length;i++){
+p[i].id = 'i'+i;
+p[i].addEventListener('click', onC, false)}
+var cId = p[0].id;
+d.body.appendChild(p[0]);
+var iW = c.width, iH = c.height; 
+var nF = iW/10, cF = 1;
+var f = setInterval(onF, 40);
+var snF=d.getElementById('floppy');
+function onC(e){
+	snF.play()
+	cId = e.target.id;
+	d.body.appendChild(e.target);
+	if(f != null)
+		clearInterval(f);
+	f = setInterval(onF, 40);
+}
+function onF(){
+	q=iW-(cF * 10);
+	iE = d.getElementById(cId);
+	t.drawImage(iE,q,0,1,iH,0,0,q, iH);
+	t.drawImage(iE,q,0,(cF * 10),iH,q,0,(cF * 10),iH);
+	cF = (cF==nF) ? 1 : cF+1;
+	if(cF==1){clearInterval(f)}
+}
+</script>
+
+</body>
+</html>
